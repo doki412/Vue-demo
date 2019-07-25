@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <input type="input" v-model="n1">
+        <select v-model="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="input" v-model="n2">
+        <input type="button" value="=" @click="calc">
+        {{result}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                n1: 0,
+                n2: 0,
+                opt: '+',
+                result: 0
+            },
+            methods: {
+                // calc(){
+                //     const n1 = this.n1;
+                //     const n2 = this.n2;
+                //     switch(this.opt){
+                //         case '+' :
+                //         this.result = parseInt(n1) + parseInt(n2)
+                //         break;
+                //         case '-' :
+                //         this.result = parseInt(n1) - parseInt(n2)
+                //         break;
+                //         case '*' :
+                //         this.result = parseInt(n1) * parseInt(n2)
+                //         break;
+                //         case '/' :
+                //         this.result = parseInt(n1) / parseInt(n2)
+                //         break;
+                //     }
+                    calc(){
+                        let codeStr = 'parseInt(this.n1)' + this.opt + 'parseInt(this.n2)'
+                        this.result = eval(codeStr)
+                    }
+                }
+            },
+        )
+    </script>
+</body>
+</html>
