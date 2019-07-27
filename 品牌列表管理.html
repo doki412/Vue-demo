@@ -24,7 +24,7 @@
                 </label>
                 <label>
                     Name:
-                    <input type="text" class="form-control" v-model="name">
+                    <input type="text" class="form-control" v-model="name" @keyup.enter="add">
                 </label>
                 <label>
                     <input type="button" value="添加" class="btn btn-primary" @click="add">
@@ -48,7 +48,7 @@
                 <tr v-for="item in search(keywords)" :key="item.id">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.ctime}}</td>
+                    <td>{{item.ctime | dateFormat}}</td>
                     <td><a href="" @click.prevent="del(item.id)">删除</a></td>
                 </tr>
 
@@ -57,6 +57,16 @@
 
     </div>
     <script>
+        Vue.filter('dateFormat', function(dateStr){
+            var dt = new Date(dateStr)
+            var y = dt.getFullYear()
+            var m = dt.getMonth() + 1
+            var d = dt.getDate()
+            let h = dt.getHours().toString().padStart(2, '0')
+            let minutes = dt.getMinutes().toString().padStart(2, '0')
+            let s = dt.getSeconds().toString().padStart(2, '0')
+            return `${y}-${m}-${d} ${h}:${minutes}:${s}`
+        })
         var vm = new Vue({
             el: '#vm',
             data: {
