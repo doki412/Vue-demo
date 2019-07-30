@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>过渡动画</title>
+  <style>
+  .v-enter, .v-leave-to{
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  .v-enter-active, .v-leave-active{
+    transition: all 0.4s ease;
+  }
+  .v-enter-to, .v-leave{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="flag = !flag">toggle</button>
+    <transition>
+      <h3 v-if="flag">这是一个进退场动画</h3>
+    </transition>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: true
+      },
+    })
+  </script>
+</body>
+
+</html>
