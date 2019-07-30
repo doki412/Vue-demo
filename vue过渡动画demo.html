@@ -7,18 +7,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>过渡动画</title>
   <style>
-  .v-enter, .v-leave-to{
-    transform: translateX(200px);
-    opacity: 0;
-  }
-  .v-enter-active, .v-leave-active{
-    transition: all 0.4s ease;
-  }
-  .v-enter-to, .v-leave{
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
+    .v-enter,
+    .v-leave-to {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+
+    .v-enter-active,
+    .v-leave-active {
+      transition: all 0.4s ease;
+    }
+    .v-enter-to,
+    .v-leave {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .my-enter,
+    .my-leave-to {
+      transform: translateY(80px);
+      opacity: 0;
+    }
+
+    .my-enter-active,
+    .my-leave-active {
+      transition: all 1s ease;
+    }
   </style>
 </head>
 
@@ -28,13 +41,19 @@
     <transition>
       <h3 v-if="flag">这是一个进退场动画</h3>
     </transition>
+    <hr>
+    <button @click="flag2 = !flag2">toggle</button>
+    <transition name="my"> 
+      <h3 v-if="flag2">这是另一个进退场动画</h3>
+    </transition>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        flag: true
+        flag: false,
+        flag2: false,
       },
     })
   </script>
