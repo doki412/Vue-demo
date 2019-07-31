@@ -37,7 +37,7 @@
           el.style.transform = "translate(0, 0)"
         },
         enter(el, done){
-          el.offsetWidth   //没有实际作用，但是不写出不了效果，可以认为是起到了强制动画刷新的作业
+          el.offsetWidth   //没有实际作用，但是不写出不了效果，可以认为是起到了强制动画刷新的作用
           el.style.transform = "translate(150px, 450px)"
           el.style.transition = "all 1s ease"
           done()          //相当于调用afterEnter函数
