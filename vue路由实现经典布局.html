@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>路由实现页面内跳转</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    h1 {
+      font-size: 20px;
+    }
+
+    .header {
+      background-color: lightgreen;
+      height: 200px;
+    }
+    #container{
+      display: flex;
+      height: 800px;
+    }
+    .left{
+      background-color: orange;
+      flex: 1;
+    }
+    .main{
+      background-color: lightpink;
+      flex: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <router-view></router-view>
+    <div id="container">
+      <router-view name="left"></router-view>
+      <router-view name="main"></router-view>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script>
+    var header = {
+      template: '<h1 class="header">header区域</h1>'
+    }
+    var leftBox = {
+      template: '<h3 class="left">leftBox区域</h3>'
+    }
+    var mainBox = {
+      template: '<h3 class="main">mainBox区域</h3>'
+    }
+
+    var router = new VueRouter({
+      routes: [
+        {
+          path: '/',
+          components: {
+            default: header,
+            left: leftBox,
+            main: mainBox
+          }
+        }
+      ]
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      router
+    })
+  </script>
+</body>
+
+</html>
