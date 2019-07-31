@@ -7,8 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>注册登录切换</title>
   <style>
-
-  </style>
+    .v-enter, .v-leave-to{
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    .v-enter-active, .v-leave-active{
+      transition: all 0.8s ease;
+    }
+  </style> 
 </head>
 
 <body>
@@ -16,7 +22,9 @@
   <div id="app">
     <a href="" @click.prevent="login">登录</a>
     <a href="" @click.prevent="register">注册</a>
-    <component :is="comName"></component>
+    <transition mode="out-in">
+        <component :is="comName"></component>
+    </transition>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
